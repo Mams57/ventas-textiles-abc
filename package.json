@@ -1,0 +1,14 @@
+{
+  "name": "ventas-textiles-abc",
+  "version": "1.0.0",
+  "description": "Sistema ABC y Maestro-Detalle para venta de telas a empresas textiles",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}

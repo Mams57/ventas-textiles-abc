@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextilPro - Venta de Telas (ABC Maestro-Detalle)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>TextilPro — Gestión de Venta de Telas al Mayoreo</h1>
+    <p>Control de Órdenes de Empresas Textiles (CRUD) y Desglose de Rollos/Metros (Maestro-Detalle)</p>
+  </header>
+
+  <main class="container">
+    <!-- SECCIÓN MAESTRO: ÓRDENES DE EMPRESAS TEXTILES -->
+    <section class="card">
+      <h2 id="form-title">Nueva Orden de Venta (Maestro)</h2>
+      <form id="orden-form">
+        <input type="hidden" id="orden-id">
+        <div class="form-grid">
+          <input type="text" id="empresa" placeholder="Nombre de la empresa textil" required>
+          <input type="text" id="contacto" placeholder="Encargado de compras" required>
+          <input type="date" id="fecha" required>
+          <select id="estado" required>
+            <option value="Cotización">Cotización</option>
+            <option value="En Corte">En Corte</option>
+            <option value="En Ruta">En Ruta</option>
+            <option value="Entregado">Entregado</option>
+          </select>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="btn-guardar">Guardar Orden</button>
+            <button type="button" class="btn-secondary hidden" id="btn-cancelar">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Folio</th>
+              <th>Empresa Textil</th>
+              <th>Contacto</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Total Metros</th>
+              <th>Total Venta</th>
+              <th>Acciones (ABC / Detalle)</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-ordenes"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DETALLE: TELAS DE LA ORDEN SELECCIONADA -->
+    <section class="card">
+      <h2>Detalle de Telas Solicitadas <span id="detalle-titulo">(Selecciona una orden)</span></h2>
+      
+      <form id="detalle-form" class="hidden">
+        <div class="form-grid">
+          <input type="text" id="tipo_tela" placeholder="Tipo de tela (ej. Mezclilla 14oz)" required>
+          <input type="text" id="color" placeholder="Color / Tono" required>
+          <input type="number" id="metros" placeholder="Metros" step="0.5" min="1" required>
+          <input type="number" id="precio_metro" placeholder="Precio por metro ($)" step="0.01" min="1" required>
+          <button type="submit" class="btn-primary">Agregar Tela</button>
+        </div>
+      </form>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo de Tela</th>
+              <th>Color</th>
+              <th>Metros</th>
+              <th>Precio / Metro</th>
+              <th>Subtotal</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-detalles">
+            <tr><td colspan="7" class="empty">Haz clic en "Ver Telas" en cualquier orden de arriba para consultar su detalle.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
